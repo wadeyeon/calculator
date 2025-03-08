@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import './App.css';
 import Screen from './components/Screen';
 import Button from './components/Button';
 import { calculator, addNumber, addOperator } from './api/calculator';
@@ -22,11 +23,18 @@ function App() {
 
   return (
     <>
-      <div>
+      <div className='container'>
         <Screen value={value ?? '0'} />
         <div className='buttons'>
           {buttonValues.flat().map((button, index) => {
-            return <Button key={index} value={button} onClick={handleClick} />;
+            return (
+              <Button
+                key={index}
+                className={(button === '=' || button === 'A/C') && 'span'}
+                value={button}
+                onClick={handleClick}
+              />
+            );
           })}
         </div>
       </div>
